@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="sk" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Dashboard pre sledovanie vývoja počtu inzerátov nehnuteľností na predaj a prenájom na Slovensku.">
+  <title>Realitný Monitor Slovensko</title>
+  
+  <!-- Modern Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <!-- Local Styles -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="app-container">
+    <!-- Header -->
+    <header>
+      <div>
+        <h1 id="main-heading">Realitný Monitor</h1>
+        <p class="subtitle">Sledovanie dynamiky trhu nehnuteľností (nehnutelnosti.sk)</p>
+      </div>
+      <button id="theme-toggle" class="theme-toggle-btn" aria-label="Prepnúť tmavý/svetlý režim" title="Prepnúť režim">
+        <!-- Sun icon (shown in dark mode) -->
+        <svg id="sun-icon" viewBox="0 0 24 24">
+          <path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41l-1.06-1.06zm1.06-10.96c.39-.39.39-1.03 0-1.41s-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zM7.05 18.36c.39-.39.39-1.03 0-1.41s-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06z"/>
+        </svg>
+        <!-- Moon icon (shown in light mode, toggled via JS) -->
+        <svg id="moon-icon" viewBox="0 0 24 24" style="display: none;">
+          <path d="M12.3 22h-.1c-5.5 0-10-4.5-10-10 0-4.7 3.3-8.8 8-9.7.5-.1 1 .3 1 .8s-.3 1-.8 1.1c-3.6.7-6.2 3.9-6.2 7.8 0 4.4 3.6 8 8 8 3.9 0 7.1-2.6 7.8-6.2.1-.5.6-.8 1.1-.8.5.1.8.6.8 1-1 4.6-5.1 7.9-9.7 8z"/>
+        </svg>
+      </button>
+    </header>
+
+    <!-- Main Grid Content -->
+    <main class="dashboard-grid">
+      <!-- Left side: Interactive Trends Chart -->
+      <section class="card animate-fade-in" id="trends-section">
+        <div class="chart-header">
+          <h2 class="chart-title" id="chart-view-title">Vývoj trhu: Regióny</h2>
+          <div class="controls-group" id="chart-controls" role="tablist">
+            <button class="btn-tab active" data-view="regions" role="tab" aria-selected="true" id="tab-regions">Regióny</button>
+            <button class="btn-tab" data-view="kosice" role="tab" aria-selected="false" id="tab-kosice">Košice</button>
+            <button class="btn-tab" data-view="bratislava" role="tab" aria-selected="false" id="tab-bratislava">Bratislava</button>
+            <button class="btn-tab" data-view="slovakia" role="tab" aria-selected="false" id="tab-slovakia">Slovensko</button>
+          </div>
+        </div>
+        <div class="chart-container">
+          <canvas id="trendsChart" id="chart-canvas"></canvas>
+        </div>
+      </section>
+
+      <!-- Right side: Latest Update Statistics Summary -->
+      <section class="card animate-fade-in" id="summary-section" style="animation-delay: 0.1s;">
+        <h2 class="chart-title" style="margin-bottom: 25px;">Posledný stav (<span id="latest-date-label">-</span>)</h2>
+        <div class="metrics-list" id="metrics-summary-container">
+          <!-- Populated dynamically via app.js -->
+          <div style="text-align: center; color: var(--text-secondary); padding: 40px 0;">Nahrávam dáta...</div>
+        </div>
+      </section>
+
+      <!-- Bottom: Historical Detailed Data Table -->
+      <section class="card table-card animate-fade-in" id="table-section" style="grid-column: 1 / -1; animation-delay: 0.2s;">
+        <div class="table-title-bar">
+          <h2 class="chart-title">Historická tabuľka porovnania</h2>
+          <p class="subtitle" style="font-size: 0.85rem;">Prehľad všetkých nameraných hodnôt v rovnakom formáte ako v tabuľkovom hárku</p>
+        </div>
+        <table id="history-table" aria-label="Historické porovnanie počtu inzerátov">
+          <thead>
+            <tr id="table-header-row">
+              <th scope="col" id="col-category">Kategória / Dátum</th>
+              <!-- Dates will be dynamically injected here -->
+            </tr>
+          </thead>
+          <tbody id="table-body">
+            <!-- Table content will be dynamically injected here -->
+          </tbody>
+        </table>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2026 Realitný Monitor. Údaje sú čerpané z verejne dostupných zdrojov portálu nehnutelnosti.sk raz týždenne.</p>
+    </footer>
+  </div>
+
+  <!-- Local Logic -->
+  <script src="app.js"></script>
+</body>
+</html>

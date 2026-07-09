@@ -1,0 +1,48 @@
+name: Weekly Real Estate Scraper
+
+on:
+  schedule:
+    # Runs every Sunday at 09:00 UTC
+    - cron: '0 9 * * 0'
+  workflow_dispatch:
+    # Allows manual trigger of the scraping action from GitHub UI
+
+jobs:
+  scrape-and-update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write  # Crucial to allow committing updated data.json back to the repo
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+
+    - name: Run Scraper
+      env:
+        GOOGLE_SHEETS_WEBHOOK_URL: ${{ secrets.GOOGLE_SHEETS_WEBHOOK_URL }}
+      run: |
+        python scraper.py
+
+    - name: Commit and Push Updated Dataset
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        
+        # Check if data.json was modified
+        git status --porcelain
+        
+        if git diff --quiet data.json; then
+          echo "No changes in data.json. Skipping commit."
+        else
+          git add data.json
+          git commit -m "chore: auto-update real estate listing history [skip ci]"
+          git push origin main
+          echo "Changes committed and pushed successfully!"
+        fi
