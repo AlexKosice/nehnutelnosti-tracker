@@ -80,7 +80,7 @@
       "bratislava_byty": 3551,
       "bratislava_domy": 724,
       "slovensko_byty": 15679,
-      "slovensko_domy": 15374,
+      "slovensko_domy": 15373,
       "kosice_byty_under_215k": 483,
       "kosice_byty_over_215k": 428,
       "bratislava_byty_under_300k": 1805,
@@ -88,7 +88,7 @@
       "slovensko_byty_under_215k": 8826,
       "slovensko_byty_over_215k": 5387,
       "slovensko_domy_under_215k": 6802,
-      "slovensko_domy_over_215k": 7051
+      "slovensko_domy_over_215k": 7050
     }
   }
 ]
