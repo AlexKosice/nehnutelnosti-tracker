@@ -71,24 +71,24 @@
   {
     "date": "09.07.2026",
     "metrics": {
-      "kosicky_kraj_byty": 1492,
-      "kosicky_kraj_domy": 1214,
+      "kosicky_kraj_byty": 1491,
+      "kosicky_kraj_domy": 1212,
       "kosice_byty": 956,
-      "kosice_domy": 185,
+      "kosice_domy": 184,
       "presovsky_kraj_byty": 1220,
-      "presovsky_kraj_domy": 935,
-      "bratislava_byty": 3550,
-      "bratislava_domy": 725,
-      "slovensko_byty": 15677,
-      "slovensko_domy": 15371,
+      "presovsky_kraj_domy": 937,
+      "bratislava_byty": 3551,
+      "bratislava_domy": 724,
+      "slovensko_byty": 15679,
+      "slovensko_domy": 15374,
       "kosice_byty_under_215k": 483,
       "kosice_byty_over_215k": 428,
-      "bratislava_byty_under_300k": 1804,
+      "bratislava_byty_under_300k": 1805,
       "bratislava_byty_over_300k": 1400,
       "slovensko_byty_under_215k": 8826,
-      "slovensko_byty_over_215k": 5386,
-      "slovensko_domy_under_215k": 6800,
-      "slovensko_domy_over_215k": 7049
+      "slovensko_byty_over_215k": 5387,
+      "slovensko_domy_under_215k": 6802,
+      "slovensko_domy_over_215k": 7051
     }
   }
 ]
