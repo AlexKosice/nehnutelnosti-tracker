@@ -182,5 +182,28 @@
       "slovensko_domy_under_215k": 6693,
       "slovensko_domy_over_215k": 6908
     }
+  },
+  {
+    "date": "09.08.2026",
+    "metrics": {
+      "kosicky_kraj_byty": 1475,
+      "kosicky_kraj_domy": 1147,
+      "kosice_byty": 963,
+      "kosice_domy": 182,
+      "presovsky_kraj_byty": 1205,
+      "presovsky_kraj_domy": 907,
+      "bratislava_byty": 3438,
+      "bratislava_domy": 689,
+      "slovensko_byty": 15244,
+      "slovensko_domy": 14958,
+      "kosice_byty_under_215k": 488,
+      "kosice_byty_over_215k": 434,
+      "bratislava_byty_under_300k": 1734,
+      "bratislava_byty_over_300k": 1358,
+      "slovensko_byty_under_215k": 8569,
+      "slovensko_byty_over_215k": 5269,
+      "slovensko_domy_under_215k": 6551,
+      "slovensko_domy_over_215k": 6890
+    }
   }
 ]
